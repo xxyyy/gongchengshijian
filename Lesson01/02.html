@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客户端验证</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-messages.min.js"></script>
+    <script>
+        angular.module('starter',['ngMessages'])
+                .controller('MyCtrl',['$scope','$filter',function ($scope,$filter) {
+                    $scope.user={
+                       username:''
+                        ,age:18
+                        ,phone:''
+                    };
+                    $scope.save = function () {
+
+                    };
+                }]);
+        //自定义过滤器
+        angular.module('starter')
+                .filter('gender',function () {
+                    return function (input) {
+                        switch(input){
+                            case 1:
+                                return '男';
+                            case 2:
+                                return '女';
+                            case 0:
+                                return '未填';
+                        }
+                    };
+                });
+        //自定义指令：远程验证
+        angular.module('starter')
+                .directive('usernameUnique',['$http',function ($http) {
+                    return {
+                        restrict:'A'
+                        ,require:'ngModel'
+                        ,scope:{
+                            url:'@'
+                            ,myUrl:'@apiUrl'
+                            ,usernameUnique:'@'
+                        }
+                        ,link:function (scope,element,attrs,ctrl) {
+                            /*ctrl.$parsers.push(function (viewValue) {
+                                
+                            });*/
+                            //console.log(ctrl);
+                            ctrl.$parsers.unshift(function (viewValue) {
+
+                                $http({
+                                    method:'GET'
+                                    ,url:scope.usernameUnique//scope.url
+                                    ,params:{username:viewValue}
+                                }).success(function (data) {
+                                    var flag=true;
+                                    angular.forEach(data,function (item) {
+                                        if(flag==false)
+                                                return;
+                                        if(item.username==viewValue){
+                                            flag=false;
+                                            //ctrl.$setValidity('nameUnique',false);
+                                        }
+                                    });
+                                    //if(flag==true)
+                                        ctrl.$setValidity('nameUnique',flag);
+                                }).error(function (data) {
+                                    ctrl.$setValidity('nameUnique',false);
+                                });
+                            });
+                        }
+                    }
+                }]);
+        angular.module('starter')
+                .directive('menu',[function () {
+                    return {
+                        restrict: 'E'
+                        ,template:'<div>\
+                        <h2 ng-click="toggle()">{{title}}</h2>\
+                        <div ng-transclude ng-show="show"></div>\
+                        </div>'
+                        ,transclude:true
+                        ,scope:true
+                        ,replace:true
+                        ,controller:function ($scope,$element,$attrs) {
+                            $scope.title = $attrs.menuTitle;
+                            $scope.show = false;
+                            $scope.toggle=function () {
+                                $scope.show = !$scope.show;
+                            };
+                        }
+                    }
+                }]);
+    </script>
+</head>
+<body ng-app="starter" ng-controller="MyCtrl" >
+    <form name="signUpForm" novalidate ng-submit="save()">
+        <!--<input name="username" type="text" required ng-model="user.username" ng-minlength="6" ng-maxlength="24" username-unique url="username.json">-->
+        <input name="username" type="text" required ng-model="user.username" ng-minlength="6" ng-maxlength="24" username-unique="username.json">
+        <div ng-messages="signUpForm.username.$error" ng-show="signUpForm.username.$touched ||signUpForm.$submitted">
+            <span ng-message="required">请输入用户名</span>
+<p ng-show="userForm.username.$error.minlength">Username is too short.</p>
+            <span ng-message="maxlength">用户名最多输入20位字符</span>
+            <span ng-message="nameUnique">用户名已经存在</span>
+        </div>
+        <br>
+        <input name="age" type="number" min="18" max="60" ng-model="user.age">
+        <br>
+        <input name="phone" type="text" ng-model="user.phone" ng-pattern="/^1[3|5|7|8]\d{9}$/">
+        <div ng-messages="signUpForm.phone.$error" ng-show="signUpForm.phone.$touched ||signUpForm.$submitted">
+            <span ng-message="pattern">手机格式不正确</span>
+        </div>
+        <br>
+        <input name="email" type="email" ng-model="user.email">
+        <div ng-messages="signUpForm.email.$error" ng-show="signUpForm.email.$touched ||signUpForm.$submitted">
+            <span ng-message="email">EMail格式不正确</span>
+        </div>
+        <br>
+        <button type="submit">保存</button>
+    </form>
+    <menu menu-title="采购">
+        <p>sldflsdflsflsdlf1</p>
+        <p>sldflsdflsflsdlf2</p>
+        <p>sldflsdflsflsdlf3</p>
+        <p>sldflsdflsflsdlf4</p>
+    </menu>
+    <menu menu-title="销售">
+        <p>sldflsdflsflsdlf5</p>
+        <p>sldflsdflsflsdlf6</p>
+        <p>sldflsdflsflsdlf7</p>
+        <p>sldflsdflsflsdlf8</p>
+    </menu>
+	<form name="userForm">
+<input 
+type="text"
+name="username"
+ng-model="user.username"
+ng-minlength="3"
+ng-maxlength="8"
+required>
+<p ng-show="userForm.username.$error.minlength">Username is too short.</p>
+<p ng-show="userForm.username.$error.maxlength">Username is too long.</p>
+<p ng-show="userForm.username.$error.required">Your username is required.</p>
+
+<input name="username" type="text" class="form-control" id="username" placeholder="用户名" ensure-unique="username" required ng-model="info.username">
+<script>
+.directive('ensureUnique', function($http) {
+ return {
+  require: 'ngModel',
+  link: function(scope, ele, attrs, c) {
+    scope.$watch(attrs.ngModel, function(n) {
+     console.info(n);
+     if (!n) return;
+     $http({
+      method: 'POST',
+      url: '/api/check/' + attrs.ensureUnique,
+      data: {
+       field: attrs.ensureUnique,
+       value: scope.ngModel
+      }
+     }).success(function(data) {
+       c.$setValidity('unique', data.isUnique);
+     }).error(function(data) {
+       c.$setValidity('unique', false);
+     });
+    });
+   }
+ };
+})
+</script>
+</form>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="UserInfoModule">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap-3.0.0/css/bootstrap.css">
+        <link rel="stylesheet" href="css/CSS1.css">
+    <script src="js/angular-1.3.0.js"></script>
+    <script src="Form.js"></script>
+</head>
+<body>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<div class="panel-title">
+			aaa
+		</div>
+	</div>
+	<div class="panel-body">
+
+<div class="row">
+	<div class="col-md-12">
+		<form class="form-horizontal" role="form" ng-controller="UserInfoCtrl">
+			<div class="form-group">
+                <label class="col-md-2 control-lable" style="text-align: center;">
+                邮箱： 
+                </label>
+            <div class="col-md-10">
+                <input type="email" class="form-control" ng-model="userInfo.email">
+            </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-lable" style="text-align: center;">
+                password： 
+                </label>
+            <div class="col-md-10">
+                <input type="password" class="form-control" ng-model="userInfo.password">
+            </div>
+            </div>
+       
+            <!-- <div class="form-group">
+               <button class="btn btn-default" ng-click="getvalue()">
+                   value
+               </button>
+            </div> -->
+  <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-default" ng-click="getFormData()">获取Form表单的值</button>
+                                <button class="btn btn-default" ng-click="setFormData()">设置Form表单的值</button>
+                                <button class="btn btn-default" ng-click="resetForm()">重置表单</button>
+                            </div>
+                        </div>
+
+
+                    </form>
+                 <div ng-controller="cssCtrl">
+                     <p class="text-{{color}}">aaaa</p>
+                        <button class="btn btn-default" ng-click="changecolor()">change</button>   </div>
+                 <div ng-controller="showCtrl">
+                        <button class="btn btn-default" ng-click="changemenu()">toggle</button>
+                        <ul ng-show="isshow">
+                        <ui>1111</ui>
+                        <ui>22222</ui>
+                        </ul>
+                        </div>
+             
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script src="lib/angular.min.js"></script>
+        <script src="lib/angular-messages.min.js"></script>
+
+	<script>
+       
+        angular.module('starter')
+                .directive('usernameUnique',['$http',function ($http) {
+                    return {
+                        restrict:'A'
+                        ,require:'ngModel'
+                        ,scope:{
+                            url:'@'
+                            ,myUrl:'@apiUrl'
+                            ,usernameUnique:'@'
+                        }
+                        ,link:function (scope,element,attrs,ctrl) {
+                            /*ctrl.$parsers.push(function (viewValue) {
+                                
+                            });*/
+                            //console.log(ctrl);
+                            ctrl.$parsers.unshift(function (viewValue) {
+
+                                $http({
+                                    method:'GET'
+                                    ,url:scope.usernameUnique//scope.url
+                                    ,params:{username:viewValue}
+                                }).success(function (data) {
+                                    var flag=true;
+                                    angular.forEach(data,function (item) {
+                                        if(flag==false)
+                                                return;
+                                        if(item.username==viewValue){
+                                            flag=false;
+                                            //ctrl.$setValidity('nameUnique',false);
+                                        }
+                                    });
+                                    //if(flag==true)
+                                        ctrl.$setValidity('nameUnique',flag);
+                                }).error(function (data) {
+                                    ctrl.$setValidity('nameUnique',false);
+                                });
+                            });
+                        }
+                    }
+                }]);
+
+    </script>
+</head>
+<body ng-app="starter" ng-controller="MyCtrl" >
+
+    <input 
+type="text"
+name="username"
+ng-model="user.username"
+ng-minlength="3"
+ng-maxlength="8"
+required>
+<p ng-show="userForm.username.$error.minlength">Username is too short.</p>
+<p ng-show="userForm.username.$error.maxlength">Username is too long.</p>
+<p ng-show="userForm.username.$error.required">Your username is required.</p>
+
+ 
+	
+
+    </div>  
+</body>
+</html>
