@@ -1,0 +1,62 @@
+<ion-view view-title="支出管理" >
+  <button class="button button-clear icon-left ion-ios-arrow-back" ng-click="goBack()">
+    &nbsp;&nbsp;返回
+  </button>
+  <ion-content class="has-header">
+ <ionic-datepicker
+  date="currentDate" min="minDate" max="maxDate"
+  callback="datePickerCallback">
+   <div>
+     <div class="row row-center">
+       <div class="col col-20">
+         <span class="button-energized">支出分类 :</span>
+       </div>
+       <div class="col col-60 list" >
+         <div class="item item-input item-select"style="height:45px;">
+           <select class="">
+             <option>个人支出</option>
+             <option>日常费用</option>
+             <option>运营成本</option>
+           </select>
+         </div>
+       </div>
+     </div>
+   <div class="row row-center">
+     <div class="col col-20">
+       <span class="button-energized">支出金额 :</span>
+     </div>
+     <div class="col col-60">
+       <button class="button button-block item-input-wrapper item-button-left">
+         {{one}}
+       </button>
+     </div>
+   </div>
+   <div class="row row-center">
+     <div class="col col-20">
+       <span class="button-energized">支出人员 :</span>
+     </div>
+     <div class="col col-60">
+       <button class="button button-block item-input-wrapper item-button-left">
+         {{keeper}}
+       </button>
+     </div>
+   </div>
+   <div class="row row-center">
+     <div class="col col-20">
+       <span class="button-energized">支出日期 :</span>
+     </div>
+     <div class="col col-60">
+       <button class="button button-block item-input-wrapper"ng-click="chack()">
+         {{ currentDate | date:'MMMM/dd/yyyy' }}
+       </button>
+     </div>
+   </div>
+   </div>
+ </ionic-datepicker>
+  </ion-content>
+  <div class="row" style="position: absolute;bottom: 10px;">
+    <div class="col">
+      <button class="button button-balanced button-block" ng-click="">保存</button>
+    </div>
+  </div>
+  </ion-view>

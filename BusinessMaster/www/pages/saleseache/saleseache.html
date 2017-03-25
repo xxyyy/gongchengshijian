@@ -1,0 +1,62 @@
+<ion-view view-title="销售列表" >
+
+  <button class="button button-clear icon-left ion-ios-arrow-back" ng-click="goBack()">
+    返回
+  </button>
+  <ion-content class="has-header">
+    <div class="list list-inset">
+      <label class="item item-input">
+          <i class="icon ion-search"></i>
+        <input type="text" placeholder="  请输入商品名称、拼音、条码" ng-model="addmember.phone">
+      </label>
+      </div>
+    <div class="row">
+      <div class="col col-60 list">
+        <div class="item item-input item-select">
+          <div class="input-label">
+            日期
+          </div>
+          <select>
+            <option>今天</option>
+            <option>昨天</option>
+            <option>最近7天</option>
+            <option>本月</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-60 list">
+        <div class="item item-input item-select">
+          <div class="input-label">
+            付款
+          </div>
+          <select>
+            <option>全部支付方式</option>
+            <option>现金</option>
+            <option>银行卡</option>
+            <option>储值卡</option>
+            <option>计次卡</option>
+            <option>欠款</option>
+            <option>支付宝</option>
+            <option>微信</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-60 list">
+        <div class="item item-input item-select">
+          <div class="input-label">
+            权限
+          </div>
+          <select>
+            <option>全部</option>
+            <option>会员</option>
+            <option>非会员</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

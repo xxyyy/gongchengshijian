@@ -1,0 +1,43 @@
+<ion-view view-title="商品管理">
+  <div class="bar bar-subheader item-input-inset">
+    <lable class="item-input-wrapper">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <input type="text" placeholder="请输入商品名称查询" ng-model="searchCondition" ng-blur="search()">
+    </lable>
+  </div>
+  <ion-nav-buttons side="right">
+    <a class="button button-clear" href="#/app/categorylist">分类</a>
+  </ion-nav-buttons>
+  <ion-content class="has-subheader">
+    <ion-refresher on-refresh="doRefresh()" pulling-text="下拉可以刷新"refreshing-text="正在加载中......">
+    </ion-refresher>
+    <div class="row row-center" style="...">
+      总共库存{{'15'}}件，总成本{{'50000.00'}}元
+      <div class="buttons">
+        <button class="button button-energized button=small button-clear button-icon ion-ios-bell"></button>
+        <button class="button button-small button-clear">
+          <i class="icon ion-plus energized"></i>
+        </button>
+      </div>
+    </div>
+    <ion-list>
+      <ion-item class="item-thumbnail-left item-icon-right"ng-repeat="item in products">
+        <img ng-src="{{item.Images[0]}}" ng-if="item.Images.length > 0">
+        <img src="pages/productmanagement/img/c_goodspicture.png" ng-if="item.Images.length===0">
+        <h2>{{item.Name}}</h2>
+        <p><span class="energized">{{item.Price}}</span></p>
+        <p>条形码：<span>{{item.Barcode}}</span>&nbsp;&nbsp;库存:<span>{{item.Stock}}</span></p>
+        <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+    </ion-list>
+    <div class="row row-center row-no-padding" ng-if="products.length===0">
+      <div class="col text-center">
+        <img class="full-image" src="pages/productmanagement/img/commodity_no.png">
+        <p>您还没有任何商品信息</p>
+        <p>您可以</p>
+        <p><button class="button button-energized">新增商品</button></p>
+      </div>
+    </div>
+    <ion-infinite-scroll on-infinite="loadMore()" distance="1%"immediate-check="false"ng-if="$more"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,40 @@
+<ion-view view-title="店铺设置">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear icon-left ion-ios-arrow-back" ng-click="goBack()">
+      &nbsp;&nbsp;返回
+    </button>
+  </ion-nav-buttons>
+  <ion-content class="stable-bg">
+    <div class="list list-inset">
+      <a class="item item-icon-right" ui-sref="app.shop">
+        店铺设置<i class="icon ion-ios-arrow-forward"></i>
+      </a>
+      <a class="item item-icon-right" ui-sref="app.changepassword">
+        密码<i class="icon ion-ios-arrow-forward"></i>
+      </a>
+    </div>
+    <div class="list list-inset">
+      <a class="item item-icon-right" ui-sref="app.aboutme">
+        关于我们<i class="icon ion-ios-arrow-forward"></i>
+      </a>
+      <div class="item item">
+        联系客服
+        <span class="item-note positive" href="tel:18649717287">10086</span>
+
+      </div>
+      <div class="item item-icon-right">
+        版本号：1.1.1<i class="icon ion-ios-arrow-forward"></i>
+      </div>
+    </div>
+    <div class="list list-inset">
+      <a class="item item-icon-right" ng-click="logout()">
+        安全退出<i class="icon ion-ios-arrow-forward"></i>
+      </a>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer">
+  <company-directive bottom="40px"></company-directive>
+    </div>
+</ion-view>
+
+

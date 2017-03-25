@@ -1,0 +1,75 @@
+<ion-view view-title="收银记账" >
+  <button class="button button-clear icon-left ion-ios-arrow-back" ng-click="goBack()">
+    &nbsp;&nbsp;返回
+  </button>
+  <ion-content class="has-header">
+    <div class="list list-inset">
+      <label class="item item-input">
+        <span class="input-label ">会员销售</span>
+        <input type="text" placeholder="输入姓名、拼音、手机号、卡号查找" ng-model="addmember.phone">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">商品名称</span>
+        <input type="text" placeholder="直接输入开始销售" ng-model="addmember.qq">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">规格</span>
+        <input type="text" placeholder="" ng-model="addmember.remark">
+      </label>
+      <label class="item item-input">
+        <span class="input-label ">实收金额</span>
+        <input type="text" class="button-energized" placeholder="0.00" ng-model="addmember.remark">
+      </label>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class="item item-input">
+          <span class="input-label">商品单价</span>
+          <input type="text" placeholder="0" ng-model="addmember.wechat">
+        </label>
+      </div>
+      <div class="col">
+        <label class="item item-input">
+          <span class="input-label">商品数量</span>
+          <input type="text" placeholder="0" ng-model="addmember.mailbox">
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col list">
+        <div class="item item-input item-select">
+          <div class="input-label">
+            店长
+          </div>
+          <select>
+            <option>店长</option>
+          </select>
+        </div>
+      </div>
+      <div class="col list">
+        <div class="item item-input item-select">
+          <div class="input-label">
+            折扣
+          </div>
+          <select>
+            <option>九折</option>
+            <option>七点五折</option>
+            <option>自定义</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <label class="item item-input">
+      <span class="input-label ">备注信息</span>
+      <input type="text" class="button-energized" placeholder="不要超过100字哟" ng-model="addmember.remark">
+    </label>
+  </ion-content>
+    <div class="row" style="position: absolute;bottom: 10px;">
+      <div class="col col-40 col-offset-10">
+        <button class="button button-balanced button-block" ng-click="">继续添加</button>
+      </div>
+      <div class="col col-40">
+        <button class="button button-dark button-block" ng-click="">结账</button>
+      </div>
+    </div>
+</ion-view>

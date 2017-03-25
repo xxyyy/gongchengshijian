@@ -1,0 +1,75 @@
+<!--menu.html-->
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content><!--中间内容-->
+    <ion-nav-bar class="bar-energized"><!--当我们浏览时，导航栏会随时更新-->
+      <ion-nav-back-button><!--后退按钮-->
+        </ion-nav-back-button>
+        <ion-nav-buttons side="left"><!--导航栏左侧自定义按钮-->
+          <button class="button button-icon button-clear ion-navicon"menu-toggle="left">
+          </button>
+        </ion-nav-buttons>
+      <!--
+      <ion-nav-buttons side="right">
+        <a class="button button-icon button-clear ion-ios-plus-empty" href="#/app/categorylist"></a>
+      </ion-nav-buttons>
+      -->
+    </ion-nav-bar>
+      <ion-nav-view name="menuContent"></ion-nav-view>
+</ion-side-menu-content>
+
+    <ion-side-menu side="left"><!--左侧菜单-->
+      <ion-content class="dark-bg">
+        <div class="row row-center row-no-padding padding-left padding-right">
+          <div class="col col-66">
+            <h4 class="light">gaorengui</h4>
+            <h6 class="stable">18649717287</h6>
+          </div>
+          <div class="col col-34 text-right">
+            <span class="assertive-bg light">&nbsp:终极版&nbsp;</span>
+          </div>
+        </div>
+        <div class="list margin-left menu-side">
+          <a class="item item-iocn-left item-icon-right dark-bg stable border-left-none" href="#/login"menu-close>
+            <i class="icon ion-search"></i>
+            账户
+          </a>
+        </div>
+
+         <ul class="list menu-side margin-left">
+          <li class="item item-icon-left item-icon-right dark-bg stable"menu-close>
+            <i class="icon ion-social-usd"></i>资金账户
+            <i class="icon ion-ios-arrow-right"></i>
+          </li>
+           <li class="item item-icon-left item-icon-right dark-bg stable"menu-close>
+             <i class="icon ion-android-phone-portrait"></i>手机橱窗
+             <i class="icon ion-ios-arrow-right"></i>
+           </li>
+           <li class="item item-icon-left item-icon-right dark-bg stable"menu-close>
+             <i class="icon ion-android-share-alt"></i>邀请有礼
+             <i class="icon ion-ios-arrow-right"></i>
+           </li>
+           <li class="item item-icon-left item-icon-right dark-bg stable"menu-close>
+             <i class="icon ion-ios-chatboxes-outline"></i>开店论坛
+             <i class="icon ion-ios-arrow-right"></i>
+           </li>
+           <li class="item item-icon-left item-icon-right dark-bg stable"menu-close>
+             <i class="icon ion-ios-paper-outline"></i>反馈建议
+             <i class="icon ion-ios-arrow-right"></i>
+           </li>
+           <li class="item item-icon-left item-icon-right dark-bg stable"menu-close>
+             <i class="icon ion-ios-compose-outline"></i>帮助中心
+             <i class="icon ion-ios-arrow-right"></i>
+           </li>
+        </ul>
+      </ion-content>
+      <ion-footer-bar class="bar-dark">
+        <a class="button button-small button-clear button-clear button-light icon-left ion-ios-gear" href="#/app/setting" menu-close>
+          设置
+        </a>
+      </ion-footer-bar>
+      </ion-side-menu>
+  <ion-side-menu side="right">
+    <ion-content class="white-bg">
+    </ion-content>
+  </ion-side-menu>
+ </ion-side-menus>

@@ -1,0 +1,35 @@
+<ion-view view-title="登录" cache-view="false">
+  <ion-content>
+    <img class="full-image" src="pages/login/img/logoin_title.jpg">
+    <ul class="list list-inset">
+      <lable class="item item-input">
+        <span class="input-label">账号</span>
+        <input type="text" placeholder="手机号码或者电子邮箱" ng-model="loginData.username">
+        </lable>
+      <label class="item item-input">
+        <span class="input-label">密码</span>
+        <input type="password" placeholder="您的生意专家登录密码" ng-model="loginData.password">
+        </label>
+      </ul>
+      <div class="row">
+        <div class="col">
+          <button class="button button-energized button-block" ng-click="login()">登录</button>
+        </div>
+        <div class="col">
+          <button class="button button-energized button-block button-outline"ng-click="togo()">
+            注册新账号</button>
+        </div>
+      </div>
+
+    <div class="row">
+       <a class="button button-small button-clear button-dark" href="#/forgotpassword">忘记密码</a>
+    </div>
+    <div class="row">
+      <a class="col button button-small button-clear button-dark text-center" href="#/welcome"><h4>查看演示</h4></a>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer">
+    <company-directive bottom="0px"></company-directive>
+  </div>
+
+</ion-view>

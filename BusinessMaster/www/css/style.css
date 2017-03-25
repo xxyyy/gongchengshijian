@@ -1,0 +1,75 @@
+/* Empty. Add your own CSS if you like */
+.margin-left{
+  margin-left:10px;
+}
+.margin-left{
+  margin-left: 10px;
+}
+.margin-right{
+  margin-right: 10px;
+}
+.margin-top{
+  margin-top: 10px;
+}
+.margin-bottom{
+  margin-bottom: 10px;
+}
+
+/*.border-left-none{*/
+  /*border-left: none;*/
+/*}*/
+
+/*.menu-side > a{*/
+  /*border-left: none;*/
+/*}*/
+
+.on-right{
+  margin-left: 40%;
+  width:60%
+}
+.menu-side li{
+  border-left:none;
+}
+.menu-side li i{
+  font-size:medium!important;
+}
+.image-title{
+  height:33%;
+}
+.col-border{
+  border:solid 1px#ececec;
+  border-right-style:none;
+  border-bottom-style:none;
+}
+.col-border:last-child{
+  border-right:solid 1px #ececec;
+}
+.row:last-child .col-border{
+  border-bottom:solid 1px #ececec;
+}
+.quich-actions {
+  display: table;
+}
+.quick-action-item{
+  width:25vw;
+  height:25vw;
+  display:table-cell;
+  vertical-align:middle;
+}
+.item-active{
+  background-color:#fff;
+  border-left-color:#FF6A3C;
+  border-left-width:4px;
+  border-left-style:solid;
+}
+.item-active{
+  background-color: #fff;
+  border-left-color: #FF6A3C;
+  border-left-width: 4px;
+  border-left-style: solid;
+}
+.iconn
+{
+  text-decoration:none;
+  color:#000;
+}
